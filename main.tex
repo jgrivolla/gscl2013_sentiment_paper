@@ -22,13 +22,7 @@ In this paper we present an overview of a UIMA-based system for Sentiment Analys
 
 With the continuing growth of Social Media such as Twitter, Facebook, and many others, both in terms of volume of content produced daily by users, and in terms of the impact it can have for reputation and decision making (buying, travelling, ...) there is a strong commercial need (and social interest) to efficiently analyze those vast amounts of mostly unstructured information and extract summarized knowledge, while also being able to explore and navigate the content.
 
-We present here a prototype system for analyzing customer reviews of hotels, detecting what people talk about and what opinions they express. The literature agrees on two main approaches for classifying opinion expressions: using supervised learning methods and applying dictionary/rule-based knowledge (see Liu B. 2012\footnote{Liu, Bing. 2012. \newblock Sentiment analysis and opinion mining. \newblock {\em Synthesis Lectures on Human Language Technologies}, (5-1), 1--167} for an overview). The choice of content to be processed also determines what kind of technique yields better results, since longer, more textured text accomodates deeper lingüistic analyses including, for example, dependency parsing\footnote{See, for example, the use of Machine Learning informed with linguistic analyses in: Wilson, Theresa, Janyce Wiebe and Paul Hoffmann. 2010.
-\newblock Recognizing contextual polarity: An exploration of features for
-  phrase-level sentiment analysis.
-\newblock {\em Computational Linguistics}, {\em 35\/}(3), 399--433.} while shorter, noisy messages, such as those from Twitter microblogs can be tackled with more superficial processing that is strengthed by massive training data and extensive lexical resources.\footnote{As in previous work from some of the authors: Chenlo, Jose M., Jordi Atserias, Carlos Rodríguez-Penagos and Roi Blanco. 2012.
-\newblock  FBM-Yahoo! at RepLab 2012.
-\newblock In: P. Forner, J. Karlgren, C. Womser-Hacker (eds.) {\em CLEF 2012 Evaluation Labs and Workshop, Online Working Notes}.}  Each of them on its own has been used in workable systems,\footnote{L. Zhang, R. Ghosh, M. Dekhil, M. Hsu, and B. Liu, “Combining Lexicon-based and Learning-based Methods for Twitter Sentiment Analysis,” HP Technical Report HPL-2011-89, 2011.
-} and a principled combination of both of them can yield good results on noisy data, since generally one (dictionaries/rules) offers good precision while the other (ML) is able to discover unseen examples and thus enhances recall. In the case at hand, the processing at the level of individual reviews is done using UIMA with a variety of analysis engines using both stochastic and symbolic approaches; the summary of the results, visualization and exploration interface is based on Solr.
+We present here a prototype system for analyzing customer reviews of hotels, detecting what people talk about and what opinions they express. The literature agrees on two main approaches for classifying opinion expressions: using supervised learning methods and applying dictionary/rule-based knowledge (see \cite{liu_sentiment_2012} for an overview). The choice of content to be processed also determines what kind of technique yields better results, since longer, more textured text accomodates deeper lingüistic analyses including, for example, dependency parsing (see, for example, the use of Machine Learning informed with linguistic analyses in \cite{wilson_recognizing_2010}) while shorter, noisy messages, such as those from Twitter microblogs can be tackled with more superficial processing that is strengthened by massive training data and extensive lexical resources (as shown in previous work from some of the authors: \cite{rodriguez-penagos_fbm:_2013,chenlo_fbm-yahoo!_2012}. Each of them on its own has been used in workable systems\cite{zhang_combining_2011} and a principled combination of both of them can yield good results on noisy data, since generally one (dictionaries/rules) offers good precision while the other (ML) is able to discover unseen examples and thus enhances recall. In the case at hand, the processing at the level of individual reviews is done using UIMA with a variety of analysis engines using both stochastic and symbolic approaches; the summary of the results, visualization and exploration interface is based on Solr.
 
 \section{Extraction of Opinionated Units}
 
@@ -46,7 +40,7 @@ For the detection of the possible targets and cues that anchor the OUs, we relie
 
 \subsection{Recognizing Opinionated Units and their polarity}
 
-In order to detect candidate opinion-bearing linguistic structures we parsed the sentences with the DeSR dependency parser\footnote{G. Attardi, F. Dell’Orletta, M. Simi, A. Chanev, and M. Ciaramita, “Multilingual dependency parsing and domain adaptation using desr,” in Proceedings of the CoNLL Shared Task Session of EMNLP-CoNLL, 2007, pp. 1112–1118.}. We looked for possible paths in the graph linking Cues to Targets, as show in Figure \ref{fig:GRAFO}, where the Target "la habitación" (the room) is qualified by "pequeña" (small) and the Target "el desayuno" (breakfast) is being described as "with room for improvement".
+In order to detect candidate opinion-bearing linguistic structures we parsed the sentences with the DeSR dependency parser\cite{attardi_multilingual_2007}. We looked for possible paths in the graph linking Cues to Targets, as show in Figure \ref{fig:GRAFO}, where the Target "la habitación" (the room) is qualified by "pequeña" (small) and the Target "el desayuno" (breakfast) is being described as "with room for improvement".
 
 \begin{figure}[ht]
 \centering
@@ -156,7 +150,7 @@ In our evaluations with 700 OUs manually annotated by 3 independent reviewers, t
 
 We found many useful UIMA components to be available as open source, and encountered few compatibility issues (other than adapting some components to be type system independent). Solr provides us with a very flexible platform to access large document collections, and in combination with UIMA allows us to explore even complex hidden relationships within those collections.
 
-One of our main objectives was to make all modules configurable and reusable, inasmuch Sentiment Analysis in general requires  tweaking to adapt to domain and genre, but this generalization often requires considerable effort. We found the different open source communities to be very receptive, and we try to participate by publishing our own contributions under permissive licenses that make them easy for others to adopt and use.
+One of our main objectives was to make all modules configurable and reusable, inasmuch as Sentiment Analysis in general requires tweaking to adapt to domain and genre, but this generalization often requires considerable effort. We found the different open source communities to be very receptive, and we try to participate by publishing our own contributions under permissive licenses that make them easy for others to adopt and use.
 
 \section{Thanks}
 This work has been partially funded by the Spanish
@@ -164,6 +158,7 @@ Government project Holopedia, TIN2010-21128-
 C02-02, and the CENIT program project Social Media,
 CEN-20101037.
 
-
+\bibliographystyle{plain}
+\bibliography{gscl2013}
 
 \end{document}
